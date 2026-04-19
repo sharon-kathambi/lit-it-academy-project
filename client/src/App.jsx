@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router'
-import './App.css'
+//import './App.css'
 import FeedbackForm from './pages/FeedbackForm'
 
 function App() {
