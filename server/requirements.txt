@@ -1,0 +1,6 @@
+fastapi[standard]
+uvicorn[standard]
+sqlmodel
+google-generativeai
+qrcode[pil]
+python-dotenv
