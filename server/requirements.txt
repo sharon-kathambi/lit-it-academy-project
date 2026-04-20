@@ -1,6 +1,6 @@
 fastapi[standard]
 uvicorn[standard]
 sqlmodel
-google-generativeai
+google.genai
 qrcode[pil]
 python-dotenv
