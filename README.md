@@ -68,8 +68,10 @@ restaurant-feedback/
  
 ### For customers `https://feedback-restaurant-git-main-smkathambi-1851s-projects.vercel.app/feedback`
 1. Scan the QR code at the table
-2. Rate food, service, and overall experience
-3. Leave an optional comment and submit
+   <img width="331" height="334" alt="Screenshot 2026-04-21 at 16 59 51" src="https://github.com/user-attachments/assets/37f8c345-9aa1-4b6e-b4fe-41c3b3397f48" />
+
+3. Rate food, service, and overall experience
+4. Leave an optional comment and submit
    
 ### For the restaurant owner `https://feedback-restaurant-git-main-smkathambi-1851s-projects.vercel.app/admin`
 1. Visit `/admin` and log in with your email and password
