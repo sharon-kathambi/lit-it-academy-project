@@ -13,13 +13,18 @@ load_dotenv()
 
 router = APIRouter(prefix="/api/insights", tags=["insights"])
 
+_client = None
+
 def get_client():
-    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    global _client
+    if _client is None:
+        _client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    return _client 
 
 
 def call_gemini(prompt: str) -> str:
     response = get_client().models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=prompt,
     )
     return response.text.strip()
