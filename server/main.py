@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from database import create_db
 from routes.feedback import router as feedback_router
 from routes.insights import router as insights_router
-#from routes.qr import router as qr_router
+from routes.qr import router as qr_router
 
 load_dotenv()
 
@@ -35,7 +35,7 @@ async def admin_guard(request: Request, call_next):
 
 app.include_router(feedback_router)
 app.include_router(insights_router)
-#app.include_router(qr_router)
+app.include_router(qr_router)
 
 
 @app.on_event("startup")

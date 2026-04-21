@@ -344,13 +344,13 @@ export default function AdminDashboard({ onLogout }) {
         {/* QR Link */}
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <a
-            href={`/api/qr/?token=${ADMIN_TOKEN}`}
+            href={`${import.meta.env.VITE_SERVER_URL}/api/qr/?token=${ADMIN_TOKEN}`}
             target="_blank"
             rel="noreferrer"
-            style={{ fontSize: "12px", color: "#444", textDecoration: "none", borderBottom: "0.5px solid #333", paddingBottom: "2px" }}
-          >
-            Feedback Form
-          </a>
+            style={{ fontSize: "12px", color: "#8a8480", textDecoration: "none", borderBottom: "0.5px solid #d8d3cc", paddingBottom: "2px" }}
+            >
+            Download QR Code
+        </a>
         </div>
 
       </div>
