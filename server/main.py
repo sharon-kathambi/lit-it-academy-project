@@ -20,8 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Simple token-based admin guard for insights + stats
-ADMIN_TOKEN = os.getenv("ADMIN_PASSWORD", "changeme")
+ADMIN_TOKEN = os.getenv("ADMIN_PASSWORD")
 
 @app.middleware("http")
 async def admin_guard(request: Request, call_next):

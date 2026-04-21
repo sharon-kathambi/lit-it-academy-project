@@ -25,7 +25,6 @@ export default function App() {
       <Routes>
         <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/admin"    element={<ProtectedAdmin />} />
-         
         <Route path="*"         element={<Navigate to="/feedback" replace />} />
       </Routes>
   );
