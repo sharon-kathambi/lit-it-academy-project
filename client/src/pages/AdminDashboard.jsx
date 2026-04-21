@@ -3,9 +3,10 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
 } from "recharts";
 
-const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN || "changeme";
+const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-const API = (path) => `http://127.0.0.1:8000/api${path}&token=${ADMIN_TOKEN}`;
+const API = (path) => `${SERVER_URL}/api${path}&token=${ADMIN_TOKEN}`;
 
 const sentimentColor = { positive: "#2d7a3a", neutral: "#888780", negative: "#f09595" };
 const sentimentBg   = { positive: "rgba(200,240,144,0.1)", neutral: "rgba(136,135,128,0.12)", negative: "rgba(240,149,149,0.1)" };

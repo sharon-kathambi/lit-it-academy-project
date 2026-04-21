@@ -11,6 +11,10 @@ const categories = [
 
 const ratingLabels = ["", "Poor", "Fair", "Good", "Great", "Excellent"];
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+
+const API = (path) => `${SERVER_URL}/api${path}`;
+
 function FeedbackForm() {
     const [ratings, setRatings] = useState({ food: 0, service: 0, overall: 0 });
       const [comment, setComment] = useState("");
@@ -28,7 +32,7 @@ function FeedbackForm() {
         setError("");
         setLoading(true);
         try {
-          const res = await fetch("http://127.0.0.1:8000/api/feedback", {
+          const res = await fetch(API("/feedback"), {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

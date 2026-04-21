@@ -123,6 +123,10 @@ export default function Login({ onLogin }) {
           🍽️
         </div>
 
+        <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", color: "#1a1714", fontSize: "26px", fontWeight: 400 }}>
+              Cedar Gardens & Restaurant
+            </h1>
+
         {/* Heading */}
         <div style={{ textAlign: "center", marginBottom: "2rem", animation: "fadeUp 0.35s ease 0.05s both" }}>
           <h1 style={{
