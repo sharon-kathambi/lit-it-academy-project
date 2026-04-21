@@ -66,12 +66,12 @@ restaurant-feedback/
  
 ## Usage
  
-### For customers `https://feedback-restaurant-chi.vercel.app/feedback`
+### For customers `https://feedback-restaurant-git-main-smkathambi-1851s-projects.vercel.app/feedback`
 1. Scan the QR code at the table
 2. Rate food, service, and overall experience
 3. Leave an optional comment and submit
    
-### For the restaurant owner `https://feedback-restaurant-chi.vercel.app/admin`
+### For the restaurant owner `https://feedback-restaurant-git-main-smkathambi-1851s-projects.vercel.app/admin`
 1. Visit `/admin` and log in with your email and password
 2. Email - admin@cedargardens.com
 3. Password - admin
@@ -79,7 +79,7 @@ restaurant-feedback/
 5. Click **"Tag sentiment"** to auto-tag reviews as positive/neutral/negative
 6. Click **"Generate insights"** to get an AI summary of all feedback
 ### Print QR codes
-Visit `http://your-backend-url/api/qr/` to download the feedback QR code.
+Visit `https://restaurant-feedback.onrender.com/api/qr/` to download the feedback QR code.
 For per-table QR codes use `?table=1`, `?table=2`, etc.
  
 ## Built With
