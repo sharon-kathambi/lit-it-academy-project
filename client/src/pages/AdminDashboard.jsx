@@ -63,7 +63,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ onLogout }) {
   const [days, setDays]         = useState(30);
   const [stats, setStats]       = useState(null);
   const [reviews, setReviews]   = useState([]);
@@ -175,11 +175,24 @@ export default function AdminDashboard() {
               Cedar Gardens & Restaurant
             </h1>
           </div>
-          <select value={days} onChange={e => setDays(Number(e.target.value))}>
-            <option value={7}>Last 7 days</option>
-            <option value={30}>Last 30 days</option>
-            <option value={90}>Last 90 days</option>
-          </select>
+           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px" }}>
+            <select value={days} onChange={e => setDays(Number(e.target.value))}>
+              <option value={7}>Last 7 days</option>
+              <option value={30}>Last 30 days</option>
+              <option value={90}>Last 90 days</option>
+            </select>
+            <button
+              onClick={() => { sessionStorage.removeItem("admin_authed"); if (onLogout) onLogout(); }}
+              style={{
+                background: "none", border: "0.5px solid #d8d3cc",
+                borderRadius: "99px", color: "#8a8480", fontSize: "12px",
+                padding: "5px 14px", cursor: "pointer",
+                fontFamily: "'DM Sans', sans-serif",
+              }}
+            >
+              Log out
+            </button>
+          </div>
         </div>
 
         {/* Stat cards */}
@@ -335,7 +348,7 @@ export default function AdminDashboard() {
             rel="noreferrer"
             style={{ fontSize: "12px", color: "#444", textDecoration: "none", borderBottom: "0.5px solid #333", paddingBottom: "2px" }}
           >
-            Download QR code
+            Feedback Form
           </a>
         </div>
 
