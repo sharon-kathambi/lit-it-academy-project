@@ -7,20 +7,20 @@ const ADMIN_TOKEN = import.meta.env.VITE_ADMIN_TOKEN || "changeme";
 
 const API = (path) => `http://127.0.0.1:8000/api${path}&token=${ADMIN_TOKEN}`;
 
-const sentimentColor = { positive: "#c8f090", neutral: "#888780", negative: "#f09595" };
+const sentimentColor = { positive: "#2d7a3a", neutral: "#888780", negative: "#f09595" };
 const sentimentBg   = { positive: "rgba(200,240,144,0.1)", neutral: "rgba(136,135,128,0.12)", negative: "rgba(240,149,149,0.1)" };
 
 function StatCard({ label, value, accent }) {
   return (
     <div style={{
-      background: "#161616",
+      background: "#ffffff",
       border: "0.5px solid #222",
       borderRadius: "16px",
       padding: "1.1rem 1.25rem",
       animation: "fadeUp 0.4s ease both",
     }}>
       <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontFamily: "'DM Sans', sans-serif" }}>{label}</p>
-      <p style={{ fontSize: "26px", fontWeight: 400, color: accent || "#f5f0e8", fontFamily: "'DM Serif Display', Georgia, serif", margin: 0 }}>{value}</p>
+      <p style={{ fontSize: "26px", fontWeight: 400, color: accent || "#1a1714", fontFamily: "'DM Serif Display', Georgia, serif", margin: 0 }}>{value}</p>
     </div>
   );
 }
@@ -45,7 +45,7 @@ function SentimentBadge({ sentiment }) {
 
 function Stars({ value }) {
   return (
-    <span style={{ color: "#c8f090", fontSize: "12px", letterSpacing: "1px" }}>
+    <span style={{ color: "#2d7a3a", fontSize: "12px", letterSpacing: "1px" }}>
       {"★".repeat(value)}{"☆".repeat(5 - value)}
     </span>
   );
@@ -54,9 +54,9 @@ function Stars({ value }) {
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
     return (
-      <div style={{ background: "#1a1a1a", border: "0.5px solid #2a2a2a", borderRadius: "10px", padding: "8px 14px", fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ background: "#1a1a1a", border: "0.5px solid #d8d3cc", borderRadius: "10px", padding: "8px 14px", fontFamily: "'DM Sans', sans-serif" }}>
         <p style={{ color: "#888", fontSize: "11px", margin: "0 0 4px" }}>{label}</p>
-        <p style={{ color: "#c8f090", fontSize: "14px", fontWeight: 500, margin: 0 }}>{payload[0].value} reviews</p>
+        <p style={{ color: "#2d7a3a", fontSize: "14px", fontWeight: 500, margin: 0 }}>{payload[0].value} reviews</p>
       </div>
     );
   }
@@ -85,7 +85,6 @@ export default function AdminDashboard() {
     }).catch(() => setStatsLoading(false));
   }, [days]);
 
-  // Build bar chart data from reviews grouped by date
   const chartData = (() => {
     const counts = {};
     reviews.forEach(r => {
@@ -131,7 +130,7 @@ export default function AdminDashboard() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #0d0d0d; }
+        body { background: #f5f2ee; }
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(14px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -143,15 +142,15 @@ export default function AdminDashboard() {
         }
         .shimmer { animation: shimmer 1.5s ease infinite; background: #1a1a1a; border-radius: 8px; }
         .action-btn {
-          background: #c8f090; border: none; border-radius: 99px;
-          color: #0d0d0d; font-size: 12px; font-weight: 500;
+          background: #2d7a3a; border: none; border-radius: 99px;
+          color: #f5f2ee; font-size: 12px; font-weight: 500;
           padding: 8px 18px; cursor: pointer;
           font-family: 'DM Sans', sans-serif; transition: background 0.2s;
         }
         .action-btn:hover { background: #b8e078; }
         .action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .ghost-btn {
-          background: none; border: 0.5px solid #2a2a2a; border-radius: 99px;
+          background: none; border: 0.5px solid #d8d3cc; border-radius: 99px;
           color: #888; font-size: 12px; font-weight: 400;
           padding: 8px 18px; cursor: pointer;
           font-family: 'DM Sans', sans-serif; transition: border-color 0.2s, color 0.2s;
@@ -160,20 +159,20 @@ export default function AdminDashboard() {
         .ghost-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .review-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 0.5px solid #1a1a1a; animation: fadeUp 0.3s ease both; }
         .review-row:last-child { border-bottom: none; }
-        select { background: #161616; border: 0.5px solid #2a2a2a; color: #888; border-radius: 99px; padding: 7px 16px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+        select { background: #ffffff; border: 0.5px solid #d8d3cc; color: #888; border-radius: 99px; padding: 7px 16px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
         select:focus { outline: none; border-color: #444; }
         .bar-track { flex: 1; background: #1e1e1e; border-radius: 99px; height: 5px; overflow: hidden; }
         .bar-fill { height: 100%; border-radius: 99px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
       `}</style>
 
-      <div style={{ minHeight: "100vh", background: "#0d0d0d", padding: "1.75rem 1.25rem 4rem", maxWidth: "520px", margin: "0 auto", fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#f5f2ee", padding: "1.75rem 1.25rem 4rem", maxWidth: "520px", margin: "0 auto", fontFamily: "'DM Sans', sans-serif" }}>
 
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.75rem", animation: "fadeUp 0.35s ease both" }}>
           <div>
             <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px" }}>Admin dashboard</p>
-            <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", color: "#f5f0e8", fontSize: "26px", fontWeight: 400 }}>
-              Mama's Kitchen
+            <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", color: "#1a1714", fontSize: "26px", fontWeight: 400 }}>
+              Cedar Gardens & Restaurant
             </h1>
           </div>
           <select value={days} onChange={e => setDays(Number(e.target.value))}>
@@ -190,19 +189,19 @@ export default function AdminDashboard() {
           ) : (
             <>
               <StatCard label="Total reviews" value={stats?.total ?? 0} />
-              <StatCard label="Avg overall"   value={stats?.avg_overall ? `${stats.avg_overall} ★` : "—"} accent="#c8f090" />
+              <StatCard label="Avg overall"   value={stats?.avg_overall ? `${stats.avg_overall} ★` : "—"} accent="#2d7a3a" />
               <StatCard label="Avg food"      value={stats?.avg_food    ? `${stats.avg_food} ★`    : "—"} />
               <StatCard label="Avg service"   value={stats?.avg_service ? `${stats.avg_service} ★` : "—"}
-                accent={stats?.avg_service < 3.5 ? "#f09595" : "#f5f0e8"} />
+                accent={stats?.avg_service < 3.5 ? "#f09595" : "#1a1714"} />
             </>
           )}
         </div>
 
         {/* Sentiment bars */}
-        <div style={{ background: "#161616", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.1s both" }}>
+        <div style={{ background: "#ffffff", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.1s both" }}>
           <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "14px" }}>Sentiment breakdown</p>
           {[
-            { label: "Positive", key: "positive", color: "#c8f090" },
+            { label: "Positive", key: "positive", color: "#2d7a3a" },
             { label: "Neutral",  key: "neutral",  color: "#888780" },
             { label: "Negative", key: "negative", color: "#f09595" },
           ].map(({ label, key, color }) => (
@@ -218,7 +217,7 @@ export default function AdminDashboard() {
 
         {/* Reviews over time chart */}
         {chartData.length > 1 && (
-          <div style={{ background: "#161616", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.15s both" }}>
+          <div style={{ background: "#ffffff", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.15s both" }}>
             <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "14px" }}>Reviews over time</p>
             <ResponsiveContainer width="100%" height={120}>
               <BarChart data={chartData} barSize={16}>
@@ -227,7 +226,7 @@ export default function AdminDashboard() {
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
                 <Bar dataKey="count" radius={[4, 4, 0, 0]}>
                   {chartData.map((_, i) => (
-                    <Cell key={i} fill={i === chartData.length - 1 ? "#c8f090" : "#2a2a2a"} />
+                    <Cell key={i} fill={i === chartData.length - 1 ? "#2d7a3a" : "#d8d3cc"} />
                   ))}
                 </Bar>
               </BarChart>
@@ -236,7 +235,7 @@ export default function AdminDashboard() {
         )}
 
         {/* AI Insights */}
-        <div style={{ background: "#161616", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.2s both" }}>
+        <div style={{ background: "#ffffff", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", marginBottom: "1.25rem", animation: "fadeUp 0.4s ease 0.2s both" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: insights ? "16px" : "0" }}>
             <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em" }}>AI insights</p>
             <button className="action-btn" onClick={generateInsights} disabled={loadingInsights}>
@@ -267,13 +266,13 @@ export default function AdminDashboard() {
               {/* Highlight */}
               <div style={{ background: "rgba(200,240,144,0.07)", border: "0.5px solid rgba(200,240,144,0.2)", borderRadius: "10px", padding: "12px", marginBottom: "16px" }}>
                 <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "5px" }}>This week's highlight</p>
-                <p style={{ fontSize: "13px", color: "#c8f090", lineHeight: 1.5 }}>{insights.highlight}</p>
+                <p style={{ fontSize: "13px", color: "#2d7a3a", lineHeight: 1.5 }}>{insights.highlight}</p>
               </div>
 
               <p style={{ fontSize: "13px", color: "#888", lineHeight: 1.6, marginBottom: "16px" }}>{insights.summary}</p>
 
               {[
-                { label: "What customers love", items: insights.positives, color: "#c8f090" },
+                { label: "What customers love", items: insights.positives, color: "#2d7a3a" },
                 { label: "Issues to fix",        items: insights.issues,    color: "#f09595" },
                 { label: "Suggestions",          items: insights.suggestions, color: "#888" },
               ].map(({ label, items, color }) => items?.length > 0 && (
@@ -292,7 +291,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Reviews */}
-        <div style={{ background: "#161616", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", animation: "fadeUp 0.4s ease 0.25s both" }}>
+        <div style={{ background: "#ffffff", border: "0.5px solid #222", borderRadius: "16px", padding: "1.1rem 1.25rem", animation: "fadeUp 0.4s ease 0.25s both" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
             <p style={{ fontSize: "11px", color: "#555", textTransform: "uppercase", letterSpacing: "0.1em" }}>Recent reviews</p>
             <button className="ghost-btn" onClick={tagSentiment} disabled={loadingTag}>
